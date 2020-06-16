@@ -1,5 +1,4 @@
 
-import matplotlib.pyplot as plt
 import numpy as np
 
 
@@ -76,8 +75,6 @@ if __name__=="__main__":
         mean_5 = np.mean(data[i-(5-1):i+1])
         ma5.append(mean_5)
     ma=calc_ada_ma(data,5)
-    print len(data)
-    print len(ma)
 
     plt.figure(1)
     plt.plot([i for i in range(len(data[950:1150]))],data[950:1150],'b',[i for i in range(len(ma[950:1150]))],ma[950:1150],'r',[i for i in range(len(ma5[950:1150]))],ma5[950:1150],'g')

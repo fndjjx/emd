@@ -22,7 +22,7 @@ def test_spline_sample():
     aa = [1,3,5,5,3,1]
     aaindex = [0,2,4,6,8,10]
     s = 0.1
-    print spline_sample(aaindex,aa,a, s)
+    #print spline_sample(aaindex,aa,a, s)
 
 
 if __name__ == "__main__":

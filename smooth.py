@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import numpy as np
 from scipy.signal import argrelextrema
 from scipy.signal import gaussian
@@ -96,7 +96,6 @@ def load_data(filename):
 
 def test_spline_smooth():
     data = [1,2,2.2,3,4,6,4,5,3,2.4,2,1]
-    print data
     step = 2
     return spline_smooth(data,step)
 
@@ -122,7 +121,6 @@ if __name__ == "__main__":
 #        eachline.strip("\n")
 #        datalist_raw.append(float(eachline.split("\t")[4]))
 #    datalist = datalist_raw[1350:]
-    print test_exp_smooth()
 #    datalist_out = cubicSmooth5(datalist)
 #
 #    data_array = np.array(datalist)
@@ -144,3 +142,4 @@ if __name__ == "__main__":
 #    plt.subplot(212)
 #    plt.plot(np.linspace(0,len(datalist_out)-1,len(datalist_out)),datalist_out,'r')
 #    plt.show()
+    pass

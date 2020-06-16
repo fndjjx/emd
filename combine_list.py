@@ -1,7 +1,6 @@
 
 import scipy as sp
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy import interpolate
 
 def ma_func(data, period):
@@ -14,7 +13,6 @@ def ma_func(data, period):
 
 def combinelist_simple(listlist):
     listlist=[list(i) for i in listlist]
-    print listlist
 
 
     length=len(listlist[0])
@@ -28,9 +26,7 @@ def combinelist_simple(listlist):
 
 
     combinelist=list([(colsum[i])/len(listlist) for i in range(length)])
-    print "comb1= %s"%combinelist
     combinelist=list(splinerestruct(combinelist))
-    print "comb2= %s"%combinelist
 
 
 
@@ -38,9 +34,6 @@ def combinelist_simple(listlist):
 
 def combinelist(listlist,plist):
     listlist=[list(i) for i in listlist]
-    print listlist
-    print len(listlist)
-    print len(plist)
 
 
     length=len(listlist[0])
@@ -55,10 +48,8 @@ def combinelist(listlist,plist):
 
 
     combinelist=list([(colsum[i])/len(listlist) for i in range(length)])
-    print "comb1= %s"%combinelist
 #    combinelist=list(splinerestruct(combinelist))
 #    combinelist=ma_func(combinelist,3)
-    print "comb2= %s"%combinelist
     return combinelist
 
 
@@ -79,7 +70,6 @@ def splinerestruct(raw_data,kk=3):
 
 
 def combinelist_max(listlist):
-    print listlist
 
     listpair=[]
     for i in listlist:

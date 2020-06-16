@@ -35,14 +35,9 @@ if __name__ == "__main__":
         close_price.append(float(eachline.split("\t")[4]))
         high_price.append(float(eachline.split("\t")[2]))
         low_price.append(float(eachline.split("\t")[3]))
-    print open_price[-1]
-    print high_price[-1]
-    print low_price[-1]
-    print close_price[-1]
     di = [(high_price[i]+low_price[i]+2*close_price[i])/4 for i in range(len(close_price))]
     ema12 = [ema(di,i,12) for i in range(12,len(di))][14:]
     ema26 = [ema(di,i,26) for i in range(26,len(di))]
-    print ema12[-1]-ema26[-1]
     dif = [ema12[i]-ema26[i] for i in range(len(ema26))]
     dea9 = [ema(dif,i,9) for i in range(9,len(dif))]
 
@@ -52,7 +47,6 @@ if __name__ == "__main__":
     dif_now = ema12_now-ema26_now
     dea_now = (dea9[-2]*8)/10+(dif_now*2)/10
     macd = dif_now - dea_now
-    print macd
 
 
     newline = str(date[-1])+"\t"+str(open_price[-1])+"\t"+str(high_price[-1])+"\t"+str(low_price[-1])+"\t"+str(close_price[-1])+"\t"+str(macd)

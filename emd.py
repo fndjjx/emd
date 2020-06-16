@@ -7,7 +7,6 @@ from smooth import cubicSmooth5
 from generate_emd_data import generateEMDdata
 from calc_match import *
 
-import matplotlib.pyplot as plt
 
 class one_dimension_emd(object):
     
@@ -224,10 +223,12 @@ class one_dimension_emd(object):
                 
             for i in range(period_num):
                 if i != period_num-1:
-                    if (sum(imf_sum_list[i*period_length:(i+1)*period_length])/sum(original_data_squre[i*period_length:(i+1)*period_length])) > threshold:
+                    print(i*period_length)
+                    print((i+1)*period_length)
+                    if (sum(imf_sum_list[int(i*period_length):int((i+1)*period_length)])/sum(original_data_squre[int(i*period_length):int((i+1)*period_length)])) > threshold:
                         flag += 1
                 else:
-                    if (sum(imf_sum_list[i*period_length:-1])/sum(original_data_squre[i*period_length:-1])) > threshold:
+                    if (sum(imf_sum_list[int(i*period_length):-1])/sum(original_data_squre[int(i*period_length):-1])) > threshold:
                         flag += 1
             
    #         print "flag %s"%flag
@@ -279,7 +280,6 @@ class one_dimension_emd(object):
                 loop_count += 1
          #       print "loop count%s"%loop_count
 
-            print "loop count {}".format(loop_count)
             process_data_list = process_data_list - imf[-1]
             residual = process_data_list 
             imf_gen_flag = False
@@ -405,7 +405,6 @@ if __name__ == "__main__":
     #        fp.writelines(str(imf[i][j]))
     #        fp.writelines("\n")
     #    fp.close()
-    print "imf num %s"%len(imf)
 
 
     residual_imf0 = [datalist[i]-imf[0][i] for i in range(len(imf[0]))]
@@ -415,16 +414,6 @@ if __name__ == "__main__":
 #    residual_imf2 = residual_imf2[-100:]
     residual_imf1 = residual_imf1[end-99:end+1]
 
-    print sum([abs(ma_test[i]-residual_imf2[i-1]) for i in range(1,len(ma_test))])/(len(ma_test)-1)
-    print sum([abs(ma_test[i]-residual_imf2[i-2]) for i in range(2,len(ma_test))])/(len(ma_test)-2)
-    print sum([abs(ma_test[i]-residual_imf2[i-3]) for i in range(3,len(ma_test))])/(len(ma_test)-3)
-    print sum([abs(ma_test[i]-residual_imf2[i-4]) for i in range(4,len(ma_test))])/(len(ma_test)-4)
-    print sum([abs(ma_test[i]-residual_imf2[i-5]) for i in range(5,len(ma_test))])/(len(ma_test)-5)
-    print sum([abs(ma_test[i]-residual_imf2[i-6]) for i in range(6,len(ma_test))])/(len(ma_test)-6)
-    print sum([abs(ma_test[i]-residual_imf2[i-7]) for i in range(7,len(ma_test))])/(len(ma_test)-7)
-    print sum([abs(ma_test[i]-residual_imf2[i-8]) for i in range(8,len(ma_test))])/(len(ma_test)-8)
-    #print "imf percentage"
-    #fp = open("residual",'w')
     #for i in range(len(residual)):
     #    fp.writelines(str(residual[i]))
     #    fp.writelines("\n")
@@ -468,9 +457,6 @@ if __name__ == "__main__":
     data = np.array(imf[2][end-99:end+1])
     imf_max_index = list(argrelextrema(data,np.greater)[0])
     imf_min_index = list(argrelextrema(data,np.less)[0])
-    print "shouldbe"
-    print imf_max_index
-    print imf_min_index
 
 
     datalist = datalist[end-99:end+1]
@@ -479,16 +465,10 @@ if __name__ == "__main__":
     data=np.array(imf[2])
     imf_max_index = list(argrelextrema(data,np.greater)[0])
     imf_min_index = list(argrelextrema(data,np.less)[0])
-    print "maybe"
-    print imf_max_index
-    print imf_min_index
     (data,extenflag1,ex_num,cha,cha2) = matchlist2(imf[2],5,datalist)
     data=np.array(data)
     imf_max_index = list(argrelextrema(data,np.greater)[0])
     imf_min_index = list(argrelextrema(data,np.less)[0])
-    print "extenbe"
-    print imf_max_index
-    print imf_min_index
 
 
     ma4.pop(0)
@@ -510,15 +490,10 @@ if __name__ == "__main__":
     ma_min_index = list(argrelextrema(ma_data,np.less)[0])
     ma_max_index = [i-3 for i in ma_max_index]
     ma_min_index = [i-3 for i in ma_min_index]
-    print "ma"
-    print ma_max_index
-    print ma_min_index
     ma5.insert(0,0)
     ma5.insert(0,0)
     ma_max_index = list(argrelextrema(np.array(ma5[end-99:end+1]),np.greater)[0])
     ma_min_index = list(argrelextrema(np.array(ma5[end-99:end+1]),np.less)[0])
-    print ma_max_index
-    print ma_min_index
 
     #imf_max = imf_max_index
     #imf_min = imf_min_index
@@ -555,7 +530,6 @@ if __name__ == "__main__":
     num_fig = len(imf)+1
     for i in range(num_fig-1):
         x = "%d1%d"%(num_fig,i+1)
-        print x
         plt.subplot(x)
         plt.plot(np.linspace(0,len(imf[i])-1,len(imf[i])),imf[i],'r')
 

@@ -126,8 +126,6 @@ class generateEMDdata():
         for i in range(n,len(data)):
             mean_5 = np.mean(data[i-(n-1):i+1])
             ma5.append(mean_5)
-        print len(data)
-        print len(ma5)
 
 #        data = []
 #        for i in range(n):
@@ -203,8 +201,6 @@ class generateEMDdata():
         for i in range(n,len(data)):
             mean_5 = np.mean(data[i-(n-1):i+1])
             ma5.append(mean_5)
-        print len(data)
-        print len(ma5)
 
         data = []
         for i in range(n):
@@ -249,8 +245,6 @@ class generateEMDdata():
         for i in range(n,len(data)+1):
             mean_5 = np.mean(data[i-(n-1):i+1])
             ma5.append(mean_5)
-        print len(data)
-        print len(ma5)
 
 #        data = []
 #        for i in range(n-1):
@@ -296,8 +290,6 @@ class generateEMDdata():
             #data.append((p[i-3]+3*p[i-2]+6*p[i-1]+7*p[i]+6*pp[0]+3*pp[1]+pp[2])/27.0)
             data.append((p[i-3]+3*p[i-2]+6*p[i-1]+17*p[i])/27.0)
 
-        print len(p)
-        print len(data)
         ma5=data
 
 
@@ -318,8 +310,6 @@ class generateEMDdata():
         for i in range(n,len(self.raw_data)+1):
             mean_5 = np.mean(self.raw_data[i-(n-1):i+1])
             ma5_p.append(mean_5)
-        print len(self.raw_data)
-        print len(ma5_p)
 
         ma5_v = []
         for i in range(n-1):
@@ -328,8 +318,6 @@ class generateEMDdata():
         for i in range(n,len(self.raw_data)+1):
             mean_5 = np.mean(self.vol_data[i-(n-1):i+1])
             ma5_v.append(mean_5)
-        print len(self.vol_data)
-        print len(ma5_v)
 
         ma5 = [ma5_p[i]*ma5_v[i] for i in range(len(ma5_p))]
 
@@ -351,8 +339,6 @@ class generateEMDdata():
         for i in range(n,len(self.raw_data)+1):
             mean_5 = np.mean(self.raw_data[i-(n-1):i+1])
             ma5_p.append(mean_5)
-        print len(self.raw_data)
-        print len(ma5_p)
 
         ma5_v = []
         for i in range(n-1):
@@ -361,8 +347,6 @@ class generateEMDdata():
         for i in range(n,len(self.raw_data)+1):
             mean_5 = np.mean(self.vol_data[i-(n-1):i+1])
             ma5_v.append(mean_5)
-        print len(self.vol_data)
-        print len(ma5_v)
 
         ma5 = [ma5_p[i]*ma5_v[i] for i in range(len(ma5_p))]
 
@@ -467,12 +451,9 @@ class generateEMDdata():
         for i in range(n):
             ma1.append(0)
         ma2 = [ema(self.raw_data,i,n) for i in range(n,len(self.raw_data))]
-        print len(ma2)
 
         ma = ma1+ma2
 
-        print "len raw%s"%len(self.raw_data)
-        print "len ema%s"%len(ma)
        
 
 
